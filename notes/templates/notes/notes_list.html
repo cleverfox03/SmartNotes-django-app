@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="my-5"> These are the notes bro (implemented with base html using DTL): </h1>
+<div class="row row-cols3 g-3">
+    {% for note in notes %}
+    <div class="col">
+        <div class="p-3 border">
+            <a href="{% url 'notes.detail' pk=note.id %}">
+                <h3 class="notes-li">{{note.title}}</h3>
+            </a>
+            {{note.text|truncatechars:10}}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<a href="{% url 'notes.new' %}" class="btn btn-primary">New Note</a>
+{% endblock %}
+
+<!-- <ul>
+    {% for note in notes %}
+    <li class="notes-li">{{note.title}}</li>
+    {% endfor %}
+</ul>         -->
+
+
+
+
+<!-- {% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    </head>
+<h1> These are the notes bro: </h1>
+
+<ul>
+    {% for note in notes %}
+    <li class="notes-li">{{note.title}}</li>
+    {% endfor %}
+</ul>
+
+</html> -->
+
